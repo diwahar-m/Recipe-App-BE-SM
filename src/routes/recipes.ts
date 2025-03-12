@@ -52,7 +52,7 @@ import Recipe from '../models/Recipe';
         })
     }
  })
- router.get('/get/:id', authMiddleware, async(req: AuthRequest, res:Response)=> {
+ router.get('/get/:id', authMiddleware, async(req: AuthRequest, res:Response):Promise<any>=> {
     try {
 
         const getSingleRecipe = await Recipe.findOne({
@@ -79,7 +79,7 @@ import Recipe from '../models/Recipe';
     }
  })
 
- router.delete('/delete/:id',authMiddleware, async(req, res)=> {
+ router.delete('/delete/:id',authMiddleware, async(req: AuthRequest, res: Response):Promise<any>=> {
     try {
 
         const getSingleRecipe = await Recipe.findOne({

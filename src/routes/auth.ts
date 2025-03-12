@@ -32,7 +32,7 @@ router.post('/register', async(req: Request, res: Response)=> {
 })
 
 // login routee 
-router.post('/login', async (req: Request, res: Response)=> {
+router.post('/login', async (req: Request, res: Response):Promise<any>=> {
     try {
         const {email, password} = req.body;
         const currentUser = await User.findOne({email});
@@ -54,7 +54,7 @@ router.post('/login', async (req: Request, res: Response)=> {
         }, 'JWT_SECRET', {expiresIn: '1h'});
 
         res.status(200).json({
-            success: false, 
+            success: true, 
             token, 
             userId: currentUser._id
         })
